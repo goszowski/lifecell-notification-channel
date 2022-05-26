@@ -1,8 +1,8 @@
 <?php
 
-namespace NotificationChannels\Lifecell;
+namespace Goszowski\Lifecell;
 
-use NotificationChannels\Lifecell\Exceptions\CouldNotSendNotification;
+use Goszowski\Lifecell\Exceptions\CouldNotSendNotification;
 use Illuminate\Notifications\Notification;
 
 class LifecellChannel
@@ -18,19 +18,18 @@ class LifecellChannel
      * @param mixed $notifiable
      * @param \Illuminate\Notifications\Notification $notification
      *
-     * @throws \NotificationChannels\:channel_namespace\Exceptions\CouldNotSendNotification
+     * @throws \Goszowski\:channel_namespace\Exceptions\CouldNotSendNotification
      */
     public function send($notifiable, Notification $notification)
     {
-        $client = new LifecellClient;
+        $client = new LifecellClient();
 
         $message = $notification->toLifecell($notifiable, $notification);
 
-        $client->send($notifiable->routeNotificationFor('lifecell'), $message->body);
-        //$response = [a call to the api of your notification send]
+        $response = $client->send($notifiable->routeNotificationFor('lifecell'), $message->body);
 
-//        if ($response->error) { // replace this by the code need to check for errors
-//            throw CouldNotSendNotification::serviceRespondedWithAnError($response);
-//        }
+        if ($response->error) {
+            throw CouldNotSendNotification::serviceRespondedWithAnError($response);
+        }
     }
 }

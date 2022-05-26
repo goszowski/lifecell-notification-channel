@@ -1,6 +1,6 @@
 <?php
 
-namespace NotificationChannels\Lifecell;
+namespace Goszowski\Lifecell;
 
 use Illuminate\Notifications\ChannelManager;
 use Illuminate\Support\Facades\Notification;
@@ -15,10 +15,9 @@ class LifecellServiceProvider extends ServiceProvider
     {
         Notification::resolved(function (ChannelManager $service) {
             $service->extend('lifecell', function ($app) {
-                return new LifecellChannel;
+                return new LifecellChannel();
             });
         });
-
     }
 
     /**
@@ -26,5 +25,6 @@ class LifecellServiceProvider extends ServiceProvider
      */
     public function register()
     {
+        //
     }
 }

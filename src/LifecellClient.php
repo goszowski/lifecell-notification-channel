@@ -1,10 +1,10 @@
 <?php
 
-namespace NotificationChannels\Lifecell;
+namespace Goszowski\Lifecell;
 
 use GuzzleHttp\Client;
 use GuzzleHttp\Exception\GuzzleException;
-use NotificationChannels\Lifecell\Exceptions\CouldNotSendNotification;
+use Goszowski\Lifecell\Exceptions\CouldNotSendNotification;
 use Illuminate\Support\Facades\Http;
 
 class LifecellClient
