@@ -1,0 +1,46 @@
+{
+    "name": "laravel-notification-channels/lifecell-notification-channel",
+    "description": "Lifecell Notification Channel",
+    "homepage": "https://gitlab.com/avocredit/packages/lifecell-notification-channel",
+    "license": "MIT",
+    "authors": [
+        {
+            "name": "goszowski",
+            "email": "goszowski@gmail.com",
+            "role": "Developer"
+        }
+    ],
+    "require": {
+        "php": ">=8.0",
+        "illuminate/notifications": "~6.0 || ~7.0 || ~8.0",
+        "illuminate/support": "~6.0 || ~7.0 || ~8.0"
+    },
+    "require-dev": {
+        "mockery/mockery": "^1.0",
+        "phpunit/phpunit": "^9.0"
+    },
+    "autoload": {
+        "psr-4": {
+            "NotificationChannels\\Lifecell\\": "src"
+        }
+    },
+    "autoload-dev": {
+        "psr-4": {
+            "NotificationChannels\\Lifecell\\Test\\": "tests"
+        }
+    },
+    "scripts": {
+        "test": "phpunit",
+        "test:coverage": "phpunit --coverage-text --coverage-clover=coverage.clover"
+    },
+    "config": {
+        "sort-packages": true
+    },
+    "extra": {
+        "laravel": {
+            "providers": [
+                "NotificationChannels\\Lifecell\\LifecellServiceProvider"
+            ]
+        }
+    }
+}
